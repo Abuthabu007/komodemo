@@ -1,0 +1,29 @@
+output "vpc_id" {
+  value       = google_compute_network.vpc.id
+  description = "VPC Network ID"
+}
+
+output "vpc_connector_id" {
+  value       = "vpc-connector"  # Existing VPC Connector - managed separately
+  description = "VPC Connector name for Cloud Run"
+}
+
+output "cloud_armor_policy_name" {
+  value       = "cloud-armor-policy-disabled"  # Cloud Armor disabled due to quota limit
+  description = "Cloud Armor security policy name (currently disabled)"
+}
+
+output "kms_keyring_name" {
+  value       = google_kms_key_ring.keyring.name
+  description = "KMS Keyring name"
+}
+
+output "storage_key_name" {
+  value       = google_kms_crypto_key.storage_key.id
+  description = "Full KMS key path for storage encryption"
+}
+
+output "database_key_name" {
+  value       = google_kms_crypto_key.database_key.id
+  description = "Full KMS key path for database encryption"
+}
