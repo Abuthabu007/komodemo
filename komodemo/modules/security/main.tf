@@ -120,10 +120,6 @@ resource "google_kms_crypto_key" "storage_key" {
   name            = "${var.project_id}-storage-key"
   key_ring        = google_kms_key_ring.keyring.id
   rotation_period = "7776000s"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 # KMS Key for database encryption
@@ -131,10 +127,6 @@ resource "google_kms_crypto_key" "database_key" {
   name            = "${var.project_id}-database-key"
   key_ring        = google_kms_key_ring.keyring.id
   rotation_period = "7776000s"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 # Note: Cloud Storage service account is auto-created when bucket encryption is configured
