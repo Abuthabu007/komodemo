@@ -124,25 +124,31 @@ resource "google_service_account_key" "api_gateway_key" {
 }
 
 # Workload Identity Pool for external authentication
-resource "google_iam_workload_identity_pool" "video_platform_pool" {
+# NOTE: Already exists in GCP project, commented out to prevent conflicts
+# resource "google_iam_workload_identity_pool" "video_platform_pool" {
+#   workload_identity_pool_id = "${var.project_id}-pool"
+#   project                   = var.project_id
+#   display_name              = "Video Platform Pool"
+# }
+
+# Local value to reference existing pool
+locals {
   workload_identity_pool_id = "${var.project_id}-pool"
-  project                   = var.project_id
-  display_name              = "Video Platform Pool"
 }
 
 # Workload Identity Provider for OAuth2
-resource "google_iam_workload_identity_pool_provider" "video_platform_provider" {
-  workload_identity_pool_id          = google_iam_workload_identity_pool.video_platform_pool.workload_identity_pool_id
-  workload_identity_pool_provider_id = "${var.project_id}-provider"
-  project                            = var.project_id
-
-  attribute_mapping = {
-    "google.subject"  = "assertion.sub"
-    "attribute.email" = "assertion.email"
-    "attribute.iss"   = "assertion.iss"
-  }
-
-  oidc {
-    issuer_uri = "https://accounts.google.com"
-  }
-}
+# resource "google_iam_workload_identity_pool_provider" "video_platform_provider" {
+#   workload_identity_pool_id          = local.workload_identity_pool_id
+#   workload_identity_pool_provider_id = "${var.project_id}-provider"
+#   project                            = var.project_id
+#
+#   attribute_mapping = {
+#     "google.subject"  = "assertion.sub"
+#     "attribute.email" = "assertion.email"
+#     "attribute.iss"   = "assertion.iss"
+#   }
+#
+#   oidc {
+#     issuer_uri = "https://accounts.google.com"
+#   }
+# }

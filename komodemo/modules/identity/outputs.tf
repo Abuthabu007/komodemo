@@ -23,5 +23,5 @@ output "analytics_sa_email" {
 }
 
 output "workload_identity_pool_name" {
-  value = google_iam_workload_identity_pool.video_platform_pool.name
+  value = local.workload_identity_pool_id
 }
