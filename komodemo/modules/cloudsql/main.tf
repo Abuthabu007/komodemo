@@ -40,11 +40,13 @@ resource "google_sql_database" "metadata" {
 }
 
 # Cloud SQL Database User with IAM authentication (for Cloud Run service account)
-resource "google_sql_user" "cloud_run_user" {
-  name     = split("@", var.cloud_run_sa_email)[0]
-  instance = google_sql_database_instance.metadata_db.name
-  type     = "CLOUD_IAM_SERVICE_ACCOUNT"
-}
+# NOTE: Commented out as service account may not be created yet
+# Uncomment after Cloud Run module is fully deployed
+# resource "google_sql_user" "cloud_run_user" {
+#   name     = replace(var.cloud_run_sa_email, ".iam.gserviceaccount.com", "")
+#   instance = google_sql_database_instance.metadata_db.name
+#   type     = "CLOUD_IAM_SERVICE_ACCOUNT"
+# }
 
 # Cloud SQL Database User (password-based authentication)
 resource "google_sql_user" "app_user" {

@@ -1,14 +1,16 @@
 # Vertex AI Search configuration for video metadata discovery
-resource "google_discovery_engine_data_store" "video_metadata" {
-  location          = var.region
-  data_store_id     = "${var.project_id}-video-metadata-store"
-  display_name      = "Video Metadata Store"
-  industry_vertical = "MEDIA"
-  content_config    = "NO_CONTENT"
-  solution_types    = ["SOLUTION_TYPE_SEARCH"]
-
-  depends_on = [var.api_dependencies]
-}
+# NOTE: Vertex AI Search Discovery Engine may not be available in all regions
+# Commenting out and will be configured separately through Google Cloud Console
+# resource "google_discovery_engine_data_store" "video_metadata" {
+#   location          = var.region
+#   data_store_id     = "${var.project_id}-video-metadata-store"
+#   display_name      = "Video Metadata Store"
+#   industry_vertical = "MEDIA"
+#   content_config    = "NO_CONTENT"
+#   solution_types    = ["SOLUTION_TYPE_SEARCH"]
+#
+#   depends_on = [var.api_dependencies]
+# }
 
 # Service account for Vertex AI to access metadata
 resource "google_service_account" "vertex_ai_search" {
