@@ -5,7 +5,7 @@ resource "google_sql_database_instance" "metadata_db" {
   region           = var.region
   deletion_protection = false
 
-  depends_on = [var.api_dependencies]
+  depends_on = [var.api_dependencies, var.service_networking_connection]
 
   settings {
     tier              = "db-f1-micro"
@@ -23,11 +23,6 @@ resource "google_sql_database_instance" "metadata_db" {
     ip_configuration {
       ipv4_enabled    = false
       private_network = var.vpc_id
-    }
-
-    database_flags {
-      name  = "cloudsql_iam_authentication"
-      value = "on"
     }
 
     user_labels = {

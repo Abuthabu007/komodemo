@@ -28,3 +28,8 @@ variable "api_dependencies" {
   type        = list(any)
   description = "API dependencies to ensure they are enabled"
 }
+
+variable "service_networking_connection" {
+  type        = any
+  description = "Service networking connection resource for VPC peering"
+}

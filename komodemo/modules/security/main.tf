@@ -192,3 +192,22 @@ resource "google_compute_firewall" "allow_health_checks" {
   source_ranges = ["35.191.0.0/16", "130.211.0.0/22"]
   target_tags   = ["health-check"]
 }
+
+# Reserved IP range for Service Networking (Cloud SQL private IP)
+resource "google_compute_global_address" "service_networking" {
+  name          = "${var.project_id}-service-networking"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 16
+  network       = google_compute_network.vpc.id
+  project       = var.project_id
+}
+
+# VPC peering connection for Service Networking (Cloud SQL)
+resource "google_service_networking_connection" "cloud_sql_peering" {
+  network                 = google_compute_network.vpc.id
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.service_networking.name]
+
+  depends_on = [google_compute_global_address.service_networking]
+}

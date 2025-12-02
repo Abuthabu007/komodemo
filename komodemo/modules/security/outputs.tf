@@ -27,3 +27,8 @@ output "database_key_name" {
   value       = google_kms_crypto_key.database_key.id
   description = "Full KMS key path for database encryption"
 }
+
+output "service_networking_connection" {
+  value       = google_service_networking_connection.cloud_sql_peering
+  description = "Service networking connection for Cloud SQL private IP"
+}
