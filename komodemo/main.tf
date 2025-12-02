@@ -78,4 +78,12 @@ module "vertex_ai_search" {
   api_dependencies          = [for svc in google_project_service.enabled_apis : svc.service]
 
   depends_on = [google_project_service.enabled_apis, module.cloud_sql, module.storage]
-} 
+}
+
+module "artifact_registry" {
+  source              = "./modules/ArtifactRegistry"
+  project_id          = var.project_id
+  service_account     = module.identity.api_gateway_sa_email
+
+  depends_on = [google_project_service.enabled_apis]
+}

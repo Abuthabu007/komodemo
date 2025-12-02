@@ -69,3 +69,19 @@ output "vertex_ai_data_store" {
   value       = module.vertex_ai_search.data_store_id
   description = "Vertex AI Search data store ID"
 }
+
+output "artifact_registry_repository" {
+  value       = module.artifact_registry.artifact_registry_repository_name
+  description = "Artifact Registry repository name for Docker images"
+}
+
+output "artifact_registry_url" {
+  value       = module.artifact_registry.artifact_registry_repository_url
+  description = "Artifact Registry repository URL for pushing images"
+}
+
+output "artifact_registry_location" {
+  value       = module.artifact_registry.artifact_registry_location
+  description = "Artifact Registry location"
+}
+
