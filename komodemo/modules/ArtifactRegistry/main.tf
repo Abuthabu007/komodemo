@@ -1,13 +1,4 @@
 
-provider "google" {
-  project = var.project_id
-  region  = "us-central1"
-}
-
-resource "google_project_service" "artifact_registry" {
-  project = var.project_id
-  service = "artifactregistry.googleapis.com"
-}
 
 resource "google_artifact_registry_repository" "docker_repo" {
   project       = var.project_id
