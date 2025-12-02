@@ -22,7 +22,9 @@ resource "google_project_service" "enabled_apis" {
     "compute.googleapis.com",
     "cloudkms.googleapis.com",
     "secretmanager.googleapis.com",
-    "vpcaccess.googleapis.com"
+    "vpcaccess.googleapis.com",
+    "sqladmin.googleapis.com",
+    "discoveryengine.googleapis.com"
   ])
 
   service = each.value

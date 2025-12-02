@@ -5,3 +5,4 @@ bucket_name = "play-video-upload-01"
 cloud_run_image = "gcr.io/cloudrun/hello"
 service_name = "video-processor"
 cors_origins = ["https://yourdomain.com"]
+db_password = "Change_This_Password_123!"

@@ -25,6 +25,13 @@ resource "google_kms_crypto_key_iam_member" "cloud_run_decrypt" {
   member        = "serviceAccount:${google_service_account.run_sa.email}"
 }
 
+# Give Cloud Run service account Cloud SQL client role
+resource "google_project_iam_member" "sa_cloud_sql_client" {
+  project = var.project_id
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.run_sa.email}"
+}
+
 
 # Cloud Run (v2) with enterprise security
 resource "google_cloud_run_v2_service" "Playvideo" {

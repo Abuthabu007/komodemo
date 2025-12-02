@@ -54,4 +54,27 @@ module "eventarc_trigger" {
   cloud_run_service_region    = module.cloud_run.location
 
   depends_on = [module.cloud_run, module.security]
+}
+
+module "cloud_sql" {
+  source                = "./modules/cloudsql"
+  project_id            = var.project_id
+  region                = var.region
+  vpc_id                = module.security.vpc_id
+  cloud_run_sa_email    = module.cloud_run.service_account_email
+  db_password           = var.db_password
+  api_dependencies      = [for svc in google_project_service.enabled_apis : svc.service]
+
+  depends_on = [google_project_service.enabled_apis, module.security, module.cloud_run]
+}
+
+module "vertex_ai_search" {
+  source                    = "./modules/vertexai-search"
+  project_id                = var.project_id
+  region                    = var.region
+  cloud_sql_instance_name   = module.cloud_sql.instance_name
+  bucket_name               = module.storage.bucket_name
+  api_dependencies          = [for svc in google_project_service.enabled_apis : svc.service]
+
+  depends_on = [google_project_service.enabled_apis, module.cloud_sql, module.storage]
 } 

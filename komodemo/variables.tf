@@ -31,4 +31,10 @@ variable "cors_origins" {
   description = "CORS allowed origins for video platform"
   default     = ["https://yourdomain.com"]
 }
+
+variable "db_password" {
+  type        = string
+  description = "Cloud SQL database password for app_user"
+  sensitive   = true
+}
  
