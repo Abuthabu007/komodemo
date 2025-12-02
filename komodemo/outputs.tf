@@ -61,8 +61,8 @@ output "cloud_sql_database" {
 }
 
 output "vertex_ai_search_engine" {
-  value       = module.vertex_ai_search.search_engine_id
-  description = "Vertex AI Search engine ID"
+  value       = module.vertex_ai_search.data_store_id
+  description = "Vertex AI Search data store ID"
 }
 
 output "vertex_ai_data_store" {
