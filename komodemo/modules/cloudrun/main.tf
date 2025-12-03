@@ -135,3 +135,42 @@ resource "google_cloud_run_service_iam_member" "api_gateway_invoker" {
 data "google_project" "project" {
   project_id = var.project_id
 }
+
+# Cloud Run Backend Configuration for Identity-Aware Proxy (IAP)
+resource "google_iap_web_backend_service_binding" "cloud_run_iap" {
+  web_backend_service = google_compute_backend_service.cloud_run_backend.id
+  iap_service_config {
+    enabled = var.enable_iap
+  }
+
+  depends_on = [google_cloud_run_v2_service.Playvideo]
+}
+
+# Backend service required for IAP binding
+resource "google_compute_backend_service" "cloud_run_backend" {
+  name            = "${var.service_name}-backend-service"
+  project         = var.project_id
+  protocol        = "HTTPS"
+  timeout_sec     = 30
+  session_affinity = "NONE"
+
+  backend {
+    group = google_compute_region_network_endpoint_group.cloud_run_neg.id
+  }
+
+  depends_on = [google_cloud_run_v2_service.Playvideo]
+}
+
+# Network Endpoint Group for Cloud Run
+resource "google_compute_region_network_endpoint_group" "cloud_run_neg" {
+  name                  = "${var.service_name}-neg"
+  network_endpoint_type = "SERVERLESS"
+  region                = var.region
+  project               = var.project_id
+
+  cloud_run {
+    service = google_cloud_run_v2_service.Playvideo.name
+  }
+
+  depends_on = [google_cloud_run_v2_service.Playvideo]
+}

@@ -37,6 +37,7 @@ module "cloud_run" {
   vpc_connector_name          = module.security.vpc_connector_id
   api_gateway_sa_email        = module.identity.api_gateway_sa_email
   storage_encryption_key      = module.security.storage_key_name
+  enable_iap                  = var.enable_iap
 
   depends_on = [google_project_service.enabled_apis, module.security, module.identity]
 }

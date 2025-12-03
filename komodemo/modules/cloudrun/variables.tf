@@ -35,3 +35,9 @@ variable "max_instances" {
   default     = 10
   description = "Maximum number of Cloud Run instances (limited to 10 per 2 CPU allocation)"
 }
+
+variable "enable_iap" {
+  type        = bool
+  default     = false
+  description = "Enable Identity-Aware Proxy for Cloud Run service"
+}

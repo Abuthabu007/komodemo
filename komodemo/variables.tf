@@ -37,3 +37,9 @@ variable "db_password" {
   description = "Cloud SQL database password for app_user"
   sensitive   = true
 }
+
+variable "enable_iap" {
+  type        = bool
+  default     = false
+  description = "Enable Identity-Aware Proxy for Cloud Run service"
+}
