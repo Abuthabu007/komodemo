@@ -136,13 +136,13 @@ data "google_project" "project" {
   project_id = var.project_id
 }
 
-# Cloud Run IAM binding for IAP (when enabled)
-resource "google_cloud_run_service_iam_member" "iap_user" {
-  count    = var.enable_iap ? 1 : 0
+# Cloud Run IAM binding for public access when IAP is disabled
+resource "google_cloud_run_service_iam_member" "public_invoker" {
+  count    = var.enable_iap ? 0 : 1
   location = google_cloud_run_v2_service.Playvideo.location
   service  = google_cloud_run_v2_service.Playvideo.name
   role     = "roles/run.invoker"
-  member   = "principalSet://goog/public:all"
+  member   = "allUsers"
 
   depends_on = [google_cloud_run_v2_service.Playvideo]
 }
