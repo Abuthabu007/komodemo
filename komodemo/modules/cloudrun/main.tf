@@ -121,17 +121,6 @@ resource "google_cloud_run_v2_service" "Playvideo" {
 # Cloud Run IAM - Restrict to authenticated users only
 
 
-# Cloud Run IAM - Identity-Aware Proxy (IAP) access
-# Allows only authenticated users through Google's IAP
-resource "google_cloud_run_service_iam_member" "iap_invoker" {
-  location = google_cloud_run_v2_service.Playvideo.location
-  service  = google_cloud_run_v2_service.Playvideo.name
-  role     = "roles/run.invoker"
-  member   = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-iap.iam.gserviceaccount.com"
-
-  depends_on = [google_cloud_run_v2_service.Playvideo]
-}
-
 # Cloud Run IAM - API Gateway specific access
 resource "google_cloud_run_service_iam_member" "api_gateway_invoker" {
   location = google_cloud_run_v2_service.Playvideo.location

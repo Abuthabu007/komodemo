@@ -32,8 +32,3 @@ output "service_networking_connection" {
   value       = google_service_networking_connection.cloud_sql_peering
   description = "Service networking connection for Cloud SQL private IP"
 }
-
-output "iap_status" {
-  value       = "IAP configured for Cloud Run. OAuth configuration must be completed through Google Cloud Console (Security > Identity-Aware Proxy)."
-  description = "IAP configuration status and setup instructions"
-}
