@@ -36,7 +36,7 @@ DB_USER = os.getenv('DB_USER', 'app_user')
 DB_PASSWORD = os.getenv('DB_PASSWORD', '')
 DB_NAME = os.getenv('DB_NAME', 'video_metadata')
 ALLOWED_EXTENSIONS = {'mp4', 'avi', 'mov', 'mkv', 'flv', 'wmv'}
-MAX_FILE_SIZE = 5 * 1024 * 1024 * 1024  # 5GB
+MAX_FILE_SIZE = 100 * 1024 * 1024 * 1024  # 5GB
 
 # Initialize GCP clients
 storage_client = storage.Client()
