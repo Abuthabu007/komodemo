@@ -31,9 +31,3 @@ variable "api_dependencies" {
   description = "List of API service names to depend on"
   default     = []
 }
-
-variable "admin_email" {
-  type        = string
-  description = "Admin email for IAP brand support contact"
-  default     = ""
-}

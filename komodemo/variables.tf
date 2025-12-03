@@ -37,9 +37,3 @@ variable "db_password" {
   description = "Cloud SQL database password for app_user"
   sensitive   = true
 }
-
-variable "admin_email" {
-  type        = string
-  description = "Admin email for IAP brand support contact"
-  default     = ""
-}

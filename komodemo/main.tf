@@ -4,7 +4,6 @@ module "security" {
   project_number     = var.project_number
   region             = var.region
   api_dependencies   = [for svc in google_project_service.enabled_apis : svc.service]
-  admin_email        = var.admin_email
 
   depends_on = [google_project_service.enabled_apis]
 }

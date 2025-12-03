@@ -33,19 +33,7 @@ output "service_networking_connection" {
   description = "Service networking connection for Cloud SQL private IP"
 }
 
-output "iap_brand_name" {
-  value       = try(google_iap_brand.project_brand.name, "")
-  description = "IAP brand resource name"
-}
-
-output "iap_client_id" {
-  value       = try(google_iap_client.project_client.client_id, "")
-  description = "IAP OAuth 2.0 client ID"
-  sensitive   = true
-}
-
-output "iap_client_secret" {
-  value       = try(google_iap_client.project_client.client_secret, "")
-  description = "IAP OAuth 2.0 client secret"
-  sensitive   = true
+output "iap_status" {
+  value       = "IAP configured for Cloud Run. OAuth configuration must be completed through Google Cloud Console (Security > Identity-Aware Proxy)."
+  description = "IAP configuration status and setup instructions"
 }
