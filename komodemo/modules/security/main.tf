@@ -211,3 +211,24 @@ resource "google_service_networking_connection" "cloud_sql_peering" {
 
   depends_on = [google_compute_global_address.service_networking]
 }
+
+# Identity-Aware Proxy (IAP) Configuration
+# Enable OAuth 2.0 consent screen and brand configuration for IAP
+
+# Get current project
+data "google_project" "current" {
+  project_id = var.project_id
+}
+
+# IAP brand for OAuth consent
+resource "google_iap_brand" "project_brand" {
+  support_email     = var.admin_email != "" ? var.admin_email : "admin@${var.project_id}.iam.gserviceaccount.com"
+  application_title = "Komo Video Platform - IAP"
+  project           = var.project_id
+}
+
+# OAuth2 Client for IAP
+resource "google_iap_client" "project_client" {
+  display_name = "Cloud Run IAP Client"
+  brand        = google_iap_brand.project_brand.name
+}

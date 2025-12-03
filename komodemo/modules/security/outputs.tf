@@ -32,3 +32,20 @@ output "service_networking_connection" {
   value       = google_service_networking_connection.cloud_sql_peering
   description = "Service networking connection for Cloud SQL private IP"
 }
+
+output "iap_brand_name" {
+  value       = try(google_iap_brand.project_brand.name, "")
+  description = "IAP brand resource name"
+}
+
+output "iap_client_id" {
+  value       = try(google_iap_client.project_client.client_id, "")
+  description = "IAP OAuth 2.0 client ID"
+  sensitive   = true
+}
+
+output "iap_client_secret" {
+  value       = try(google_iap_client.project_client.client_secret, "")
+  description = "IAP OAuth 2.0 client secret"
+  sensitive   = true
+}
