@@ -160,6 +160,23 @@ def health_check() -> Tuple[Dict[str, Any], int]:
         return {'status': 'unhealthy', 'error': str(e)}, 503
 
 
+@app.route('/', methods=['GET'])
+def root() -> Tuple[Dict[str, str], int]:
+    """Root endpoint - API info"""
+    return {
+        'service': 'Komo Video Processing Platform',
+        'version': '1.0.0',
+        'endpoints': {
+            'health': '/health',
+            'upload': '/upload (POST)',
+            'metadata': '/metadata/<video_id> (GET/PUT)',
+            'videos': '/videos/<owner_id> (GET)',
+            'search': '/search?q=query (GET)',
+            'audit_log': '/audit-log (GET)'
+        }
+    }, 200
+
+
 @app.route('/upload', methods=['POST'])
 @require_auth
 def upload_video() -> Tuple[Dict[str, Any], int]:
