@@ -8,7 +8,5 @@ cors_origins = ["https://yourdomain.com"]
 db_password = "Change_This_Password_123!"
 enable_iap = true
 iap_users = [
-  # Add your email addresses here to grant access
-  user : "ahamedbeema1988@gmail.com",
-  # Example: "group@yourdomain.com"
+  "user:ahamedbeema1988@gmail.com", 
 ]
