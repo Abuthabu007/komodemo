@@ -9,6 +9,6 @@ db_password = "Change_This_Password_123!"
 enable_iap = true
 iap_users = [
   # Add your email addresses here to grant access
-  # Example: "user@example.com",
+  user : "ahamedbeema1988@gmail.com",
   # Example: "group@yourdomain.com"
 ]
