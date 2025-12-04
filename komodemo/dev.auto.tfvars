@@ -7,3 +7,8 @@ service_name = "video-processor"
 cors_origins = ["https://yourdomain.com"]
 db_password = "Change_This_Password_123!"
 enable_iap = true
+iap_users = [
+  # Add your email addresses here to grant access
+  # Example: "user@example.com",
+  # Example: "group@yourdomain.com"
+]

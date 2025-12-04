@@ -38,6 +38,7 @@ module "cloud_run" {
   api_gateway_sa_email        = module.identity.api_gateway_sa_email
   storage_encryption_key      = module.security.storage_key_name
   enable_iap                  = var.enable_iap
+  iap_users                   = var.iap_users
 
   depends_on = [google_project_service.enabled_apis, module.security, module.identity]
 }

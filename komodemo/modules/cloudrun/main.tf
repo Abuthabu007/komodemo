@@ -146,3 +146,15 @@ resource "google_cloud_run_service_iam_member" "public_invoker" {
 
   depends_on = [google_cloud_run_v2_service.Playvideo]
 }
+
+# Cloud Run IAM bindings for IAP users (when IAP is enabled)
+resource "google_cloud_run_service_iam_member" "iap_users" {
+  for_each = toset(var.enable_iap ? var.iap_users : [])
+  
+  location = google_cloud_run_v2_service.Playvideo.location
+  service  = google_cloud_run_v2_service.Playvideo.name
+  role     = "roles/run.invoker"
+  member   = each.value
+
+  depends_on = [google_cloud_run_v2_service.Playvideo]
+}

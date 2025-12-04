@@ -43,3 +43,9 @@ variable "enable_iap" {
   default     = false
   description = "Enable Identity-Aware Proxy for Cloud Run service"
 }
+
+variable "iap_users" {
+  type        = list(string)
+  default     = []
+  description = "List of user emails or groups to grant Cloud Run Invoker access (e.g., ['user@example.com', 'group@example.com'])"
+}
