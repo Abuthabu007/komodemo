@@ -8,5 +8,7 @@ cors_origins = ["https://yourdomain.com"]
 db_password = "Change_This_Password_123!"
 enable_iap = true
 iap_users = [
-  "user:ahamedbeema1988@gmail.com", "amrithathachand@gmail.com", "muskansharma2598@gmail.com"
+  "user:ahamedbeema1988@gmail.com",
+  "user:amrithathachand@gmail.com",
+  "user:muskansharma2598@gmail.com"
 ]
