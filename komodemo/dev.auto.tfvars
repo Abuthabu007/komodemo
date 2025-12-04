@@ -8,7 +8,9 @@ cors_origins = ["https://yourdomain.com"]
 db_password = "Change_This_Password_123!"
 enable_iap = true
 iap_users = [
-  "user:ahamedbeema1988@gmail.com",
-  "user:amrithathachand@gmail.com",
-  "user:muskansharma2598@gmail.com"
+  # Add valid Google account emails or groups that exist in your organization
+  # Examples:
+  # "user:ahamedbeema1988@gmail.com",           # Individual Google account
+  # "group:developers@yourdomain.com",          # Google Workspace group
+  # "serviceAccount:service@project.iam.gserviceaccount.com"  # Service account
 ]
