@@ -213,5 +213,6 @@ resource "google_service_networking_connection" "cloud_sql_peering" {
   
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [reserved_peering_ranges]
   }
 }

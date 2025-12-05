@@ -30,6 +30,10 @@ resource "google_sql_database_instance" "metadata_db" {
       purpose     = "video-metadata"
     }
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # Cloud SQL Database
