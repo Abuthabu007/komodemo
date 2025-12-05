@@ -32,7 +32,7 @@ resource "google_sql_database_instance" "metadata_db" {
   }
 
   lifecycle {
-    create_before_destroy = true
+    create_before_destroy = false
   }
 }
 
