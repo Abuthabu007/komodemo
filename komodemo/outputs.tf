@@ -40,25 +40,25 @@ output "kms_keyring" {
   description = "KMS Keyring for encryption"
 }
 
-output "cloud_sql_instance" {
-  value       = module.cloud_sql.instance_name
-  description = "Cloud SQL instance name for video metadata"
-}
+// output "cloud_sql_instance" {
+//   value       = module.cloud_sql.instance_name
+//   description = "Cloud SQL instance name for video metadata"
+// }
 
-output "cloud_sql_connection_name" {
-  value       = module.cloud_sql.instance_connection_name
-  description = "Cloud SQL connection name for Cloud SQL Auth proxy"
-}
+// output "cloud_sql_connection_name" {
+//   value       = module.cloud_sql.instance_connection_name
+//   description = "Cloud SQL connection name for Cloud SQL Auth proxy"
+// }
 
-output "cloud_sql_private_ip" {
-  value       = module.cloud_sql.private_ip
-  description = "Cloud SQL private IP address"
-}
+// output "cloud_sql_private_ip" {
+//   value       = module.cloud_sql.private_ip
+//   description = "Cloud SQL private IP address"
+// }
 
-output "cloud_sql_database" {
-  value       = module.cloud_sql.database_name
-  description = "Cloud SQL database name"
-}
+// output "cloud_sql_database" {
+//   value       = module.cloud_sql.database_name
+//   description = "Cloud SQL database name"
+// }
 
 output "vertex_ai_search_engine" {
   value       = module.vertex_ai_search.data_store_id
