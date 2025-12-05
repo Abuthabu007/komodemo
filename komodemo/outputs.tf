@@ -60,15 +60,15 @@ output "kms_keyring" {
 //   description = "Cloud SQL database name"
 // }
 
-output "vertex_ai_search_engine" {
-  value       = module.vertex_ai_search.data_store_id
-  description = "Vertex AI Search data store ID"
-}
+// output "vertex_ai_search_engine" {
+//   value       = module.vertex_ai_search.data_store_id
+//   description = "Vertex AI Search data store ID"
+// }
 
-output "vertex_ai_data_store" {
-  value       = module.vertex_ai_search.data_store_id
-  description = "Vertex AI Search data store ID"
-}
+// output "vertex_ai_data_store" {
+//   value       = module.vertex_ai_search.data_store_id
+//   description = "Vertex AI Search data store ID"
+// }
 
 output "artifact_registry_repository" {
   value       = module.artifact_registry.artifact_registry_repository_name
