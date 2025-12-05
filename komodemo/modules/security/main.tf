@@ -210,4 +210,8 @@ resource "google_service_networking_connection" "cloud_sql_peering" {
   reserved_peering_ranges = [google_compute_global_address.service_networking.name]
 
   depends_on = [google_compute_global_address.service_networking]
+  
+  lifecycle {
+    create_before_destroy = true
+  }
 }
